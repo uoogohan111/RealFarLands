@@ -9,7 +9,7 @@ description = "Recreates the classic Minecraft Beta Far Lands terrain corruption
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
+        languageVersion.set(JavaLanguageVersion.of(25))
     }
 }
 
