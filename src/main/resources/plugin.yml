@@ -1,0 +1,24 @@
+name: RealFarLands
+version: ${version}
+description: ${description}
+main: dev.realfarlands.RealFarLands
+api-version: "1.21"
+authors:
+  - RealFarLands Contributors
+website: https://github.com/your-org/RealFarLands
+
+commands:
+  farlands:
+    description: Main RealFarLands command
+    usage: /farlands <reload|info|tp|debug>
+    aliases:
+      - fl
+      - rfl
+
+permissions:
+  farlands.admin:
+    description: Access to admin commands (reload, debug)
+    default: op
+  farlands.tp:
+    description: Permission to teleport to the Far Lands
+    default: op

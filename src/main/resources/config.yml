@@ -1,0 +1,93 @@
+# ============================================================
+#  RealFarLands - Classic Beta Far Lands Terrain Recreation
+#  Version 1.0.0
+# ============================================================
+# This plugin recreates the classic Minecraft Beta Far Lands
+# corruption effect using modern Paper chunk generation APIs.
+#
+# IMPORTANT: This plugin requires a CUSTOM GENERATOR world.
+# Set your world generator in bukkit.yml:
+#   worlds:
+#     world:
+#       generator: RealFarLands
+# Or create a new world with: /mv create farlands normal -g RealFarLands
+# ============================================================
+
+enabled: true
+
+# The world to apply Far Lands generation to.
+# This world MUST use RealFarLands as its generator (see above).
+world: world
+
+farlands:
+  # Which side of the world generates Far Lands terrain.
+  # Options: POSITIVE_X, NEGATIVE_X, POSITIVE_Z, NEGATIVE_Z
+  side: POSITIVE_X
+
+  # Coordinate (in blocks) where Far Lands corruption begins.
+  # Classic Beta Far Lands appeared near X/Z = 12,550,821.
+  # For testing, set this lower (e.g. 1000).
+  start-coordinate: 12500000
+
+  # Coordinate where Far Lands reach maximum corruption.
+  # Beyond this point terrain is maximally corrupted.
+  end-coordinate: 30000000
+
+  # Distance (in blocks) over which terrain blends from
+  # normal into Far Lands. Larger = smoother transition.
+  blending-distance: 5000
+
+  # Multiplies the height of Far Lands terrain columns.
+  # 1.0 = normal height scale, 2.5 = classic Beta height scale.
+  height-multiplier: 2.5
+
+  # Strength of noise corruption (overflow effect).
+  # 1.0 = classic Beta behavior, higher = more chaotic.
+  noise-corruption-strength: 1.0
+
+  # Whether to preserve vanilla biome placement in the Far Lands.
+  # true = keeps biome data, false = uses flat plains biome.
+  preserve-biomes: true
+
+  # Whether to allow vanilla structure generation inside Far Lands.
+  preserve-structures: false
+
+  # === Advanced Terrain Features ===
+
+  # Enable floating terrain islands above the main Far Lands mass.
+  floating-terrain: true
+
+  # Enable void tears (holes that drop to the void).
+  void-tearing: false
+
+  # Enable terrain folding / inverted overhangs.
+  terrain-folding: true
+
+  # Enable extreme cave generation inside Far Lands.
+  extreme-caves: false
+
+  # === Preset ===
+  # Override all terrain settings with a named preset.
+  # Options: NONE, CLASSIC_BETA, EXTREME, CURSED, SMOOTH
+  # Set to NONE to use the settings above.
+  preset: NONE
+
+performance:
+  # Pre-generate chunk noise data asynchronously before the
+  # main thread needs it. Reduces initial chunk-load lag.
+  async-pre-generation: true
+
+  # Cache computed Far Lands noise results per chunk column.
+  # Significantly reduces CPU usage at the cost of some RAM.
+  chunk-cache: true
+
+  # Maximum number of cached chunk columns.
+  # Each entry uses ~2 KB of RAM.
+  cache-size: 4096
+
+debug:
+  # Show particle visualizations of corruption zones.
+  show-particles: false
+
+  # Log extra chunk generation information to console.
+  verbose-logging: false
